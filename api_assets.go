@@ -491,6 +491,7 @@ AssetsApiService
      * @param "Search" (optional.String) - 
      * @param "SortBy" (optional.Interface of AssetSortBy) - 
      * @param "SortOrder" (optional.Interface of SortOrder) - 
+     * @param "InvoiceProfileId" (optional.Int32) - 
 @return []Asset
 */
 
@@ -507,6 +508,7 @@ type AssetsApiApiV1AssetsGetOpts struct {
     Search optional.String
     SortBy optional.Interface
     SortOrder optional.Interface
+    InvoiceProfileId optional.Int32
 }
 
 func (a *AssetsApiService) ApiV1AssetsGet(ctx context.Context, localVarOptionals *AssetsApiApiV1AssetsGetOpts) ([]Asset, *http.Response, error) {
@@ -560,6 +562,9 @@ func (a *AssetsApiService) ApiV1AssetsGet(ctx context.Context, localVarOptionals
 	}
 	if localVarOptionals != nil && localVarOptionals.SortOrder.IsSet() {
 		localVarQueryParams.Add("SortOrder", parameterToString(localVarOptionals.SortOrder.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.InvoiceProfileId.IsSet() {
+		localVarQueryParams.Add("InvoiceProfileId", parameterToString(localVarOptionals.InvoiceProfileId.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
@@ -748,6 +753,7 @@ AssetsApiService
      * @param "Search" (optional.String) - 
      * @param "SortBy" (optional.Interface of AssetSortBy) - 
      * @param "SortOrder" (optional.Interface of SortOrder) - 
+     * @param "InvoiceProfileId" (optional.Int32) - 
 @return []AssetOrder
 */
 
@@ -764,6 +770,7 @@ type AssetsApiApiV1AssetsOrdersGetOpts struct {
     Search optional.String
     SortBy optional.Interface
     SortOrder optional.Interface
+    InvoiceProfileId optional.Int32
 }
 
 func (a *AssetsApiService) ApiV1AssetsOrdersGet(ctx context.Context, localVarOptionals *AssetsApiApiV1AssetsOrdersGetOpts) ([]AssetOrder, *http.Response, error) {
@@ -817,6 +824,9 @@ func (a *AssetsApiService) ApiV1AssetsOrdersGet(ctx context.Context, localVarOpt
 	}
 	if localVarOptionals != nil && localVarOptionals.SortOrder.IsSet() {
 		localVarQueryParams.Add("SortOrder", parameterToString(localVarOptionals.SortOrder.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.InvoiceProfileId.IsSet() {
+		localVarQueryParams.Add("InvoiceProfileId", parameterToString(localVarOptionals.InvoiceProfileId.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}

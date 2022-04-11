@@ -34,6 +34,7 @@ Name | Type | Description | Notes
 **PurchaseDate** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
 **InvoiceProfile** | [***ObjectReference**](ObjectReference.md) |  | [optional] [default to null]
 **Tags** | [***AssetTags**](AssetTags.md) |  | [optional] [default to null]
+**AutoRenewEnabled** | **bool** |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -65,6 +65,7 @@ Name | Type | Description  | Notes
  **customerTenantId** | **optional.Int32**|  | 
  **agreementId** | **optional.Int32**|  | 
  **isTrial** | **optional.Bool**|  | 
+ **ignoreTermBillingCycleCombinationsCheck** | **optional.Bool**|  | 
  **agreementIds** | [**optional.Interface of []int32**](int32.md)|  | 
  **searchDate** | **optional.Time**|  | 
  **includePartNumbers** | [**optional.Interface of []string**](string.md)|  | 

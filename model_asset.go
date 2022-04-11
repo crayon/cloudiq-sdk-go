@@ -43,4 +43,5 @@ type Asset struct {
 	PurchaseDate time.Time `json:"purchaseDate,omitempty"`
 	InvoiceProfile *ObjectReference `json:"invoiceProfile,omitempty"`
 	Tags *AssetTags `json:"tags,omitempty"`
+	AutoRenewEnabled bool `json:"autoRenewEnabled,omitempty"`
 }

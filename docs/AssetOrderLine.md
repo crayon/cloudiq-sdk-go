@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **ResellerPriceTypeValue** | **float64** |  | [optional] [default to null]
 **IsTrial** | **bool** |  | [optional] [default to null]
 **Name** | **string** |  | [optional] [default to null]
+**AttestationAccepted** | **bool** |  | [optional] [default to null]
 **Tags** | [***AssetTags**](AssetTags.md) |  | [optional] [default to null]
 **Errors** | [**[]AssetOrderLineError**](AssetOrderLineError.md) |  | [optional] [default to null]
 

@@ -26,6 +26,7 @@ type AssetOrderLine struct {
 	ResellerPriceTypeValue float64 `json:"resellerPriceTypeValue,omitempty"`
 	IsTrial bool `json:"isTrial,omitempty"`
 	Name string `json:"name,omitempty"`
+	AttestationAccepted bool `json:"attestationAccepted,omitempty"`
 	Tags *AssetTags `json:"tags,omitempty"`
 	Errors []AssetOrderLineError `json:"errors,omitempty"`
 }

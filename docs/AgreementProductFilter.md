@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **CustomerTenantId** | **int32** |  | [optional] [default to null]
 **AgreementId** | **int32** |  | [optional] [default to null]
 **IsTrial** | **bool** |  | [optional] [default to null]
+**IgnoreTermBillingCycleCombinationsCheck** | **bool** |  | [optional] [default to null]
 **AgreementIds** | **[]int32** |  | [optional] [default to null]
 **SearchDate** | [**time.Time**](time.Time.md) |  | [optional] [default to null]
 **Include** | [***AgreementProductsSubFilter**](AgreementProductsSubFilter.md) |  | [optional] [default to null]

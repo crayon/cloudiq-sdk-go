@@ -21,6 +21,7 @@ type AgreementProductFilter struct {
 	CustomerTenantId int32 `json:"customerTenantId,omitempty"`
 	AgreementId int32 `json:"agreementId,omitempty"`
 	IsTrial bool `json:"isTrial,omitempty"`
+	IgnoreTermBillingCycleCombinationsCheck bool `json:"ignoreTermBillingCycleCombinationsCheck,omitempty"`
 	AgreementIds []int32 `json:"agreementIds,omitempty"`
 	SearchDate time.Time `json:"searchDate,omitempty"`
 	Include *AgreementProductsSubFilter `json:"include,omitempty"`

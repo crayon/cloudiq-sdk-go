@@ -201,6 +201,7 @@ Name | Type | Description  | Notes
  **search** | **optional.String**|  | 
  **sortBy** | [**optional.Interface of AssetSortBy**](.md)|  | 
  **sortOrder** | [**optional.Interface of SortOrder**](.md)|  | 
+ **invoiceProfileId** | **optional.Int32**|  | 
 
 ### Return type
 
@@ -270,6 +271,7 @@ Name | Type | Description  | Notes
  **search** | **optional.String**|  | 
  **sortBy** | [**optional.Interface of AssetSortBy**](.md)|  | 
  **sortOrder** | [**optional.Interface of SortOrder**](.md)|  | 
+ **invoiceProfileId** | **optional.Int32**|  | 
 
 ### Return type
 

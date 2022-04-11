@@ -255,6 +255,14 @@ paths:
         schema:
           type: boolean
           nullable: true
+      - name: IgnoreTermBillingCycleCombinationsCheck
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+          nullable: true
       - name: AgreementIds
         in: query
         required: false
@@ -1169,6 +1177,14 @@ paths:
         explode: true
         schema:
           $ref: '#/components/schemas/SortOrder'
+      - name: InvoiceProfileId
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
       responses:
         "200":
           description: Success
@@ -1314,6 +1330,14 @@ paths:
         explode: true
         schema:
           $ref: '#/components/schemas/SortOrder'
+      - name: InvoiceProfileId
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
       responses:
         "200":
           description: Success
@@ -6551,6 +6575,10 @@ components:
         minimumQuantity:
           type: number
           format: double
+        maximumQuantity:
+          type: number
+          format: double
+          nullable: true
       additionalProperties: false
       example:
         productFamily: null
@@ -6567,9 +6595,10 @@ components:
         licenseType: null
         id: 6
         purchasePeriod: purchasePeriod
-        minimumQuantity: 3.616076749251911
+        minimumQuantity: 3.61607674925191080461672754609026014804840087890625
         productType: null
         deleteDate: 2000-01-23T04:56:07.000+00:00
+        maximumQuantity: 2.027123023002321833274663731572218239307403564453125
         product:
           itemName: itemName
           itemLegalName: itemLegalName
@@ -6606,7 +6635,7 @@ components:
           nullable: true
       additionalProperties: false
       example:
-        value: 4.145608029883936
+        value: 7.3862819483858839220147274318151175975799560546875
         currencyCode: currencyCode
     PriceCalculationType:
       type: integer
@@ -6637,7 +6666,7 @@ components:
         cultureCode: cultureCode
         description: description
         learnMoreLink: learnMoreLink
-        externalProductId: 1
+        externalProductId: 6
     AgreementProduct:
       type: object
       properties:
@@ -6687,18 +6716,18 @@ components:
       example:
         agreementType: 1
         agreement: null
-        monthMultiplier: 7
+        monthMultiplier: 1
         catalog: null
         salesPrice: null
         productInformation:
           cultureCode: cultureCode
           description: description
           learnMoreLink: learnMoreLink
-          externalProductId: 1
+          externalProductId: 6
         priceCalculationType: 1
         alternativeSalesPrice: null
         recommendedRetailPrice:
-          value: 4.145608029883936
+          value: 7.3862819483858839220147274318151175975799560546875
           currencyCode: currencyCode
         productVariant:
           productFamily: null
@@ -6715,9 +6744,10 @@ components:
           licenseType: null
           id: 6
           purchasePeriod: purchasePeriod
-          minimumQuantity: 3.616076749251911
+          minimumQuantity: 3.61607674925191080461672754609026014804840087890625
           productType: null
           deleteDate: 2000-01-23T04:56:07.000+00:00
+          maximumQuantity: 2.027123023002321833274663731572218239307403564453125
           product:
             itemName: itemName
             itemLegalName: itemLegalName
@@ -6744,12 +6774,12 @@ components:
           - 9
           - 9
         name: name
-        priceId: 2
+        priceId: 4
         priceListName: priceListName
-        minimumQuantity: 6
+        minimumQuantity: 7
         uniqueId: uniqueId
         productType: 0
-        maximumQuantity: 7
+        maximumQuantity: 1
     AgreementProductsSubFilter:
       type: object
       properties:
@@ -6887,6 +6917,9 @@ components:
         isTrial:
           type: boolean
           nullable: true
+        ignoreTermBillingCycleCombinationsCheck:
+          type: boolean
+          nullable: true
         agreementIds:
           type: array
           nullable: true
@@ -6954,7 +6987,7 @@ components:
           nullable: true
       additionalProperties: false
       example:
-        commitmentLevel: 6.027456183070403
+        commitmentLevel: 6.02745618307040320615897144307382404804229736328125
         name: name
         id: 1
         agreementNumber: agreementNumber
@@ -6982,7 +7015,7 @@ components:
       additionalProperties: false
       example:
         agreement:
-          commitmentLevel: 6.027456183070403
+          commitmentLevel: 6.02745618307040320615897144307382404804229736328125
           name: name
           id: 1
           agreementNumber: agreementNumber
@@ -7061,7 +7094,7 @@ components:
         customerNumber: customerNumber
         hasTerms: true
         number: number
-        commitmentLevel: 5.962133916683182
+        commitmentLevel: 5.962133916683182377482808078639209270477294921875
         masterAgreement: masterAgreement
         organization:
           name: name
@@ -7261,12 +7294,15 @@ components:
           $ref: '#/components/schemas/ObjectReference'
         tags:
           $ref: '#/components/schemas/AssetTags'
+        autoRenewEnabled:
+          type: boolean
+          nullable: true
       additionalProperties: false
       example:
         resellerCustomerId: 5
         purchaseDate: 2000-01-23T04:56:07.000+00:00
-        salesPrice: 1.2315135367772556
-        purchasePrice: 7.386281948385884
+        salesPrice: 1.231513536777255612975068288506008684635162353515625
+        purchasePrice: 7.3862819483858839220147274318151175975799560546875
         purchaseCurrency: purchaseCurrency
         reservedInstanceArtifactResourceId: reservedInstanceArtifactResourceId
         publisherId: 9
@@ -7294,7 +7330,7 @@ components:
           id: 4
           publisherSubscriptionId: publisherSubscriptionId
         billingCycle: 7
-        resellerPriceTypeValue: 1.4894159098541704
+        resellerPriceTypeValue: 1.489415909854170383397331534069962799549102783203125
         name: name
         modifiedDate: 2000-01-23T04:56:07.000+00:00
         invoiceProfile:
@@ -7303,6 +7339,7 @@ components:
         salesCurrency: salesCurrency
         resellerPriceType: 1
         externalProductId: externalProductId
+        autoRenewEnabled: true
         startDate: 2000-01-23T04:56:07.000+00:00
         programId: 3
         status: 6
@@ -7395,6 +7432,9 @@ components:
         name:
           type: string
           nullable: true
+        attestationAccepted:
+          type: boolean
+          nullable: true
         tags:
           $ref: '#/components/schemas/AssetTags'
         errors:
@@ -7409,6 +7449,7 @@ components:
         productVariantId: 5
         type: 9
         isTrial: true
+        attestationAccepted: true
         termDuration: termDuration
         tags:
           owner: owner
@@ -7422,7 +7463,7 @@ components:
         requiresInventoryCheck: true
         billingCycle: 7
         scope: 3
-        resellerPriceTypeValue: 4.145608029883936
+        resellerPriceTypeValue: 4.1456080298839363962315474054776132106781005859375
         name: name
         resellerPriceType: 2
         subscriptionId: 5
@@ -7479,6 +7520,7 @@ components:
           productVariantId: 5
           type: 9
           isTrial: true
+          attestationAccepted: true
           termDuration: termDuration
           tags:
             owner: owner
@@ -7492,7 +7534,7 @@ components:
           requiresInventoryCheck: true
           billingCycle: 7
           scope: 3
-          resellerPriceTypeValue: 4.145608029883936
+          resellerPriceTypeValue: 4.1456080298839363962315474054776132106781005859375
           name: name
           resellerPriceType: 2
           subscriptionId: 5
@@ -7513,6 +7555,7 @@ components:
           productVariantId: 5
           type: 9
           isTrial: true
+          attestationAccepted: true
           termDuration: termDuration
           tags:
             owner: owner
@@ -7526,7 +7569,7 @@ components:
           requiresInventoryCheck: true
           billingCycle: 7
           scope: 3
-          resellerPriceTypeValue: 4.145608029883936
+          resellerPriceTypeValue: 4.1456080298839363962315474054776132106781005859375
           name: name
           resellerPriceType: 2
           subscriptionId: 5
@@ -7941,7 +7984,7 @@ components:
           id: 6
         id: 0
         totalSalesPrice:
-          value: 4.145608029883936
+          value: 7.3862819483858839220147274318151175975799560546875
           currencyCode: currencyCode
         startDate: 2000-01-23T04:56:07.000+00:00
     GroupedBillingStatement:
@@ -7982,7 +8025,7 @@ components:
           id: 6
         id: 6
         totalSalesPrice:
-          value: 4.145608029883936
+          value: 7.3862819483858839220147274318151175975799560546875
           currencyCode: currencyCode
         startDate: 2000-01-23T04:56:07.000+00:00
     BlogItem:
@@ -8209,7 +8252,7 @@ components:
           id: 6
         customerTenantType: 6
         id: 0
-        resellerMarkup: 5.962133916683182
+        resellerMarkup: 5.962133916683182377482808078639209270477294921875
         email: email
     AgreementTypeConsent:
       type: integer
@@ -8364,7 +8407,7 @@ components:
           id: 6
         customerTenantType: 6
         id: 0
-        resellerMarkup: 5.962133916683182
+        resellerMarkup: 5.962133916683182377482808078639209270477294921875
         consumer: null
     CustomerTenantUser:
       type: object
@@ -8560,7 +8603,7 @@ components:
             id: 6
           customerTenantType: 6
           id: 0
-          resellerMarkup: 5.962133916683182
+          resellerMarkup: 5.962133916683182377482808078639209270477294921875
           consumer: null
     Token:
       type: object
@@ -8905,7 +8948,7 @@ components:
           customerNumber: customerNumber
           hasTerms: true
           number: number
-          commitmentLevel: 5.962133916683182
+          commitmentLevel: 5.962133916683182377482808078639209270477294921875
           masterAgreement: masterAgreement
           organization:
             name: name
@@ -8996,7 +9039,7 @@ components:
             customerNumber: customerNumber
             hasTerms: true
             number: number
-            commitmentLevel: 5.962133916683182
+            commitmentLevel: 5.962133916683182377482808078639209270477294921875
             masterAgreement: masterAgreement
             organization:
               name: name
@@ -9017,7 +9060,7 @@ components:
             customerNumber: customerNumber
             hasTerms: true
             number: number
-            commitmentLevel: 5.962133916683182
+            commitmentLevel: 5.962133916683182377482808078639209270477294921875
             masterAgreement: masterAgreement
             organization:
               name: name
@@ -9110,7 +9153,7 @@ components:
           type: boolean
       additionalProperties: false
       example:
-        commitmentLevel: 9.301444243932576
+        commitmentLevel: 9.301444243932575517419536481611430644989013671875
         name: name
         id: 7
         agreementNumber: agreementNumber
@@ -9214,7 +9257,7 @@ components:
           format: double
       additionalProperties: false
       example:
-        salesPricePerAlternativeUnit: 2.027123023002322
+        salesPricePerAlternativeUnit: 2.027123023002321833274663731572218239307403564453125
         product:
           itemName: itemName
           itemLegalName: itemLegalName
@@ -9223,7 +9266,7 @@ components:
           id: 1
         quantity: 2
         agreement:
-          commitmentLevel: 9.301444243932576
+          commitmentLevel: 9.301444243932575517419536481611430644989013671875
           name: name
           id: 7
           agreementNumber: agreementNumber
@@ -9251,7 +9294,7 @@ components:
           message: message
         productContainerId: 5
         salesUnitPrice:
-          value: 4.145608029883936
+          value: 7.3862819483858839220147274318151175975799560546875
           currencyCode: currencyCode
         usageCountryCode: usageCountryCode
         priceCalculation: 3
@@ -9267,7 +9310,7 @@ components:
           crayonEmployee: true
           id: id
           userName: userName
-        levelValue: 4.145608029883936
+        levelValue: 4.1456080298839363962315474054776132106781005859375
     ProductContainerCommentUser:
       type: object
       properties:
@@ -9557,7 +9600,7 @@ components:
           email: email
         category: 6
         productRows:
-        - salesPricePerAlternativeUnit: 2.027123023002322
+        - salesPricePerAlternativeUnit: 2.027123023002321833274663731572218239307403564453125
           product:
             itemName: itemName
             itemLegalName: itemLegalName
@@ -9566,7 +9609,7 @@ components:
             id: 1
           quantity: 2
           agreement:
-            commitmentLevel: 9.301444243932576
+            commitmentLevel: 9.301444243932575517419536481611430644989013671875
             name: name
             id: 7
             agreementNumber: agreementNumber
@@ -9594,7 +9637,7 @@ components:
             message: message
           productContainerId: 5
           salesUnitPrice:
-            value: 4.145608029883936
+            value: 7.3862819483858839220147274318151175975799560546875
             currencyCode: currencyCode
           usageCountryCode: usageCountryCode
           priceCalculation: 3
@@ -9610,8 +9653,8 @@ components:
             crayonEmployee: true
             id: id
             userName: userName
-          levelValue: 4.145608029883936
-        - salesPricePerAlternativeUnit: 2.027123023002322
+          levelValue: 4.1456080298839363962315474054776132106781005859375
+        - salesPricePerAlternativeUnit: 2.027123023002321833274663731572218239307403564453125
           product:
             itemName: itemName
             itemLegalName: itemLegalName
@@ -9620,7 +9663,7 @@ components:
             id: 1
           quantity: 2
           agreement:
-            commitmentLevel: 9.301444243932576
+            commitmentLevel: 9.301444243932575517419536481611430644989013671875
             name: name
             id: 7
             agreementNumber: agreementNumber
@@ -9648,7 +9691,7 @@ components:
             message: message
           productContainerId: 5
           salesUnitPrice:
-            value: 4.145608029883936
+            value: 7.3862819483858839220147274318151175975799560546875
             currencyCode: currencyCode
           usageCountryCode: usageCountryCode
           priceCalculation: 3
@@ -9664,7 +9707,7 @@ components:
             crayonEmployee: true
             id: id
             userName: userName
-          levelValue: 4.145608029883936
+          levelValue: 4.1456080298839363962315474054776132106781005859375
     ProductRowPatch:
       type: object
       properties:
@@ -9782,7 +9825,7 @@ components:
         changedBy: changedBy
         priceType: 5
         type: 1
-        value: 5.637376656633329
+        value: 5.63737665663332876420099637471139430999755859375
         objectId: 0
         objectType: 6
     ResellerSalesPriceToggle:
@@ -9855,7 +9898,7 @@ components:
       example:
         product: null
         quantity: 7
-        markup: 9.301444243932576
+        markup: 9.301444243932575517419536481611430644989013671875
         orderId: orderId
         cancellationAllowedUntilDate: 2000-01-23T04:56:07.000+00:00
         publisherSubscriptionId: publisherSubscriptionId
@@ -10016,7 +10059,7 @@ components:
         subscriptions:
         - product: null
           quantity: 7
-          markup: 9.301444243932576
+          markup: 9.301444243932575517419536481611430644989013671875
           orderId: orderId
           cancellationAllowedUntilDate: 2000-01-23T04:56:07.000+00:00
           publisherSubscriptionId: publisherSubscriptionId
@@ -10040,7 +10083,7 @@ components:
           status: null
         - product: null
           quantity: 7
-          markup: 9.301444243932576
+          markup: 9.301444243932575517419536481611430644989013671875
           orderId: orderId
           cancellationAllowedUntilDate: 2000-01-23T04:56:07.000+00:00
           publisherSubscriptionId: publisherSubscriptionId
@@ -10066,7 +10109,7 @@ components:
         endDate: 2000-01-23T04:56:07.000+00:00
         acceptAutoSuspension: true
         cancellationAllowedUntilDate: 2000-01-23T04:56:07.000+00:00
-        salesPrice: 7.386281948385884
+        salesPrice: 7.3862819483858839220147274318151175975799560546875
         entitlementId: entitlementId
         publisherSubscriptionId: publisherSubscriptionId
         isTrial: true
@@ -10083,7 +10126,7 @@ components:
           id: 1
         quantity: 6
         autoSuspensionDate: 2000-01-23T04:56:07.000+00:00
-        markup: 2.027123023002322
+        markup: 2.027123023002321833274663731572218239307403564453125
         scheduledNextTermInstructions:
           product:
             productId: productId
@@ -10122,8 +10165,8 @@ components:
           format: double
       additionalProperties: false
       example:
-        recommendedRetailPrice: 1.4658129805029452
-        purchasePrice: 6.027456183070403
+        recommendedRetailPrice: 1.46581298050294517310021547018550336360931396484375
+        purchasePrice: 6.02745618307040320615897144307382404804229736328125
         currencyCode: currencyCode
     SubscriptionDetailed:
       type: object
@@ -10240,7 +10283,7 @@ components:
         subscriptions:
         - product: null
           quantity: 7
-          markup: 9.301444243932576
+          markup: 9.301444243932575517419536481611430644989013671875
           orderId: orderId
           cancellationAllowedUntilDate: 2000-01-23T04:56:07.000+00:00
           publisherSubscriptionId: publisherSubscriptionId
@@ -10264,7 +10307,7 @@ components:
           status: null
         - product: null
           quantity: 7
-          markup: 9.301444243932576
+          markup: 9.301444243932575517419536481611430644989013671875
           orderId: orderId
           cancellationAllowedUntilDate: 2000-01-23T04:56:07.000+00:00
           publisherSubscriptionId: publisherSubscriptionId
@@ -10290,7 +10333,7 @@ components:
         endDate: 2000-01-23T04:56:07.000+00:00
         acceptAutoSuspension: true
         cancellationAllowedUntilDate: 2000-01-23T04:56:07.000+00:00
-        salesPrice: 7.386281948385884
+        salesPrice: 7.3862819483858839220147274318151175975799560546875
         entitlementId: entitlementId
         publisherSubscriptionId: publisherSubscriptionId
         isTrial: true
@@ -10319,7 +10362,7 @@ components:
           id: 1
         quantity: 5
         autoSuspensionDate: 2000-01-23T04:56:07.000+00:00
-        markup: 2.027123023002322
+        markup: 2.027123023002321833274663731572218239307403564453125
         scheduledNextTermInstructions:
           product:
             productId: productId
@@ -10343,8 +10386,8 @@ components:
         partNumber: partNumber
         autoRenewEnabled: true
         pricing:
-          recommendedRetailPrice: 1.4658129805029452
-          purchasePrice: 6.027456183070403
+          recommendedRetailPrice: 1.46581298050294517310021547018550336360931396484375
+          purchasePrice: 6.02745618307040320615897144307382404804229736328125
           currencyCode: currencyCode
         availableAddonsCount: 9
         startDate: 2000-01-23T04:56:07.000+00:00
@@ -10600,7 +10643,7 @@ components:
       additionalProperties: false
       example:
         accountId: 0
-        amount: 6.027456183070403
+        amount: 6.02745618307040320615897144307382404804229736328125
         accountName: accountName
         supplier: supplier
         subscriptionName: subscriptionName
@@ -10640,7 +10683,7 @@ components:
           nullable: true
       additionalProperties: false
       example:
-        amount: 0.8008281904610115
+        amount: 0.80082819046101150206595775671303272247314453125
         category: category
         currencyCode: currencyCode
     CategoryUsageCostRequest:
@@ -10680,7 +10723,7 @@ components:
           nullable: true
       additionalProperties: false
       example:
-        amount: 0.8008281904610115
+        amount: 0.80082819046101150206595775671303272247314453125
         subcategory: subcategory
         currencyCode: currencyCode
     SubcategoryUsageCostRequest:
@@ -10723,7 +10766,7 @@ components:
           nullable: true
       additionalProperties: false
       example:
-        amount: 0.8008281904610115
+        amount: 0.80082819046101150206595775671303272247314453125
         meter: meter
         currencyCode: currencyCode
     SubscriptionResourceGroupUsageCost:
@@ -10742,7 +10785,7 @@ components:
       additionalProperties: false
       example:
         resourceGroup: resourceGroup
-        amount: 0.8008281904610115
+        amount: 0.80082819046101150206595775671303272247314453125
         currencyCode: currencyCode
     ResourceGroupUsageCostRequest:
       type: object
@@ -10787,7 +10830,7 @@ components:
           nullable: true
       additionalProperties: false
       example:
-        amount: 0.8008281904610115
+        amount: 0.80082819046101150206595775671303272247314453125
         meter: meter
         category: category
         subcategory: subcategory

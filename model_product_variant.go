@@ -41,4 +41,5 @@ type ProductVariant struct {
 	AvailableBillingCycleIds []int32 `json:"availableBillingCycleIds,omitempty"`
 	Attributes map[string]interface{} `json:"attributes,omitempty"`
 	MinimumQuantity float64 `json:"minimumQuantity,omitempty"`
+	MaximumQuantity float64 `json:"maximumQuantity,omitempty"`
 }

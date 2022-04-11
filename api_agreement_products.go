@@ -129,6 +129,7 @@ AgreementProductsApiService
      * @param "CustomerTenantId" (optional.Int32) - 
      * @param "AgreementId" (optional.Int32) - 
      * @param "IsTrial" (optional.Bool) - 
+     * @param "IgnoreTermBillingCycleCombinationsCheck" (optional.Bool) - 
      * @param "AgreementIds" (optional.Interface of []int32) - 
      * @param "SearchDate" (optional.Time) - 
      * @param "IncludePartNumbers" (optional.Interface of []string) - 
@@ -187,6 +188,7 @@ type AgreementProductsApiApiV1AgreementProductsGetOpts struct {
     CustomerTenantId optional.Int32
     AgreementId optional.Int32
     IsTrial optional.Bool
+    IgnoreTermBillingCycleCombinationsCheck optional.Bool
     AgreementIds optional.Interface
     SearchDate optional.Time
     IncludePartNumbers optional.Interface
@@ -276,6 +278,9 @@ func (a *AgreementProductsApiService) ApiV1AgreementProductsGet(ctx context.Cont
 	}
 	if localVarOptionals != nil && localVarOptionals.IsTrial.IsSet() {
 		localVarQueryParams.Add("IsTrial", parameterToString(localVarOptionals.IsTrial.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.IgnoreTermBillingCycleCombinationsCheck.IsSet() {
+		localVarQueryParams.Add("IgnoreTermBillingCycleCombinationsCheck", parameterToString(localVarOptionals.IgnoreTermBillingCycleCombinationsCheck.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.AgreementIds.IsSet() {
 		localVarQueryParams.Add("AgreementIds", parameterToString(localVarOptionals.AgreementIds.Value(), "multi"))
